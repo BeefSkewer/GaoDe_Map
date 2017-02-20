@@ -17,7 +17,7 @@ public class GaodeOenHelper extends SQLiteOpenHelper {
             +"account text,"
             +"password text,"
             +"bike_num,"
-            +"bike_location"
+            +"bike_location,"
             +" available_time)";
     /**
      * 可用自行车信息的建表语句
@@ -27,7 +27,7 @@ public class GaodeOenHelper extends SQLiteOpenHelper {
             +"location text,"
             +"used blob,"
             +"bike_num text,"
-            +"area text,)";//待使用自行车所在的区域
+            +"area text5)";//待使用自行车所在的区域
 
 
     public GaodeOenHelper(Context context, String name, SQLiteDatabase.CursorFactory

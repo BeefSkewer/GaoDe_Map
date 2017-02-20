@@ -1,12 +1,9 @@
-package com.example.administrator.gaode_map;
+package com.example.administrator.gaode_map.db;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.amap.api.maps.offlinemap.Province;
-import com.example.administrator.gaode_map.db.GaodeOenHelper;
 import com.example.administrator.gaode_map.model.Bike;
 import com.example.administrator.gaode_map.model.User;
 
@@ -80,5 +77,22 @@ public class GaoDe_MapDB {
                     "values(?,?,?,?,?)",new String[]{user.getAccount(),user.getPassword(),
               user.getBike_num(),user.getAvailable_time(),user.getBike_location()});
         }
+    }
+    public User loaduser(String accout){
+        User user = new User();
+        Cursor cursor=db.query("user",null,"account=?",new String[]{accout},null,null,null);
+        if(cursor.moveToFirst()) {
+
+
+                user.setAccount(cursor.getString(cursor.getColumnIndex("account")));
+                user.setPassword(cursor.getString(cursor.getColumnIndex("password")));
+                user.setBike_num(cursor.getString(cursor.getColumnIndex("bike_num")));
+                user.setAvailable_time(cursor.getString(cursor.getColumnIndex("available_time")));
+                user.setBike_location(cursor.getString(cursor.getColumnIndex("bike_location")));
+
+
+
+        }
+        return user;
     }
 }
